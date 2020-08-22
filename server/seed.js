@@ -1,26 +1,23 @@
-const fs = require('fs');
-const path = require('path');
+const fs = require("fs");
+const path = require("path");
 
 function createCups() {
-    const result = [];
+  const result = [];
 
-    fs.readFile('db.json', function(err, data) {
-        var json = JSON.parse(data);
-        result = json;
-    });
+  fs.readFile("db.json", function (err, data) {
+    var json = JSON.parse(data);
+    result = json;
+  });
 
-    return result;
+  return result;
 }
 
 function main() {
-    const data = {
-        cups: createCups(),
-    };
+  const data = {
+    cups: createCups(),
+  };
 
-    fs.writeFileSync(
-        path.resolve(__dirname, 'db.json'),
-        JSON.stringify(data, null, 4)
-    );
+  fs.writeFileSync(path.resolve(__dirname, "db.json"), JSON.stringify(data, null, 4));
 }
 
 main();

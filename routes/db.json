@@ -1,0 +1,127 @@
+[{
+        "id": "1",
+        "headquarter": "Uruguay",
+        "year": 1930,
+        "champion": "Uruguay",
+        "score": "4-2",
+        "subChampion": "Argentina"
+    },
+    {
+        "id": "2",
+        "headquarter": "Italia",
+        "year": 1934,
+        "champion": "Italia",
+        "score": "2-1",
+        "subChampion": "Checoslovaquia"
+    },
+    { "id": "3", "headquarter": "Francia", "year": 1938, "champion": "Italia", "score": "4-2", "subChampion": "Hungría" },
+    { "id": "4", "headquarter": "Brasil", "year": 1950, "champion": "Uruguay", "score": "2-1", "subChampion": "Brasil" },
+    { "id": "5", "headquarter": "Suiza", "year": 1954, "champion": "Alemania", "score": "3-2", "subChampion": "Hungría" },
+    { "id": "6", "headquarter": "Suecia", "year": 1958, "champion": "Brasil", "score": "5-2", "subChampion": "Suecia" },
+    {
+        "id": "7",
+        "headquarter": "Chile",
+        "year": 1962,
+        "champion": "Brasil",
+        "score": "3-1",
+        "subChampion": "Checoslovaquia"
+    },
+    {
+        "id": "8",
+        "headquarter": "Inglaterra",
+        "year": 1966,
+        "champion": "Inglaterra",
+        "score": "4-2",
+        "subChampion": "Alemania"
+    },
+    { "id": "9", "headquarter": "México", "year": 1970, "champion": "Brasil", "score": "4-1", "subChampion": "Italia" },
+    {
+        "id": "10",
+        "headquarter": "Alemania",
+        "year": 1974,
+        "champion": "Alemania",
+        "score": "2-1",
+        "subChampion": "Holanda"
+    },
+    {
+        "id": "11",
+        "headquarter": "Argentina",
+        "year": 1978,
+        "champion": "Argentina",
+        "score": "3-1",
+        "subChampion": "Holanda"
+    },
+    {
+        "id": "12",
+        "headquarter": "España",
+        "year": 1982,
+        "champion": "Italia",
+        "score": "3-1",
+        "subChampion": "Alemania"
+    },
+    {
+        "id": "13",
+        "headquarter": "México",
+        "year": 1986,
+        "champion": "Argentina",
+        "score": "3-2",
+        "subChampion": "Alemania"
+    },
+    {
+        "id": "14",
+        "headquarter": "Italia",
+        "year": 1990,
+        "champion": "Alemania",
+        "score": "1-0",
+        "subChampion": "Argentina"
+    },
+    {
+        "id": "15",
+        "headquarter": "Estados Unidos",
+        "year": 1994,
+        "champion": "Brasil",
+        "score": "3-2",
+        "subChampion": "Italia"
+    },
+    {
+        "id": "16",
+        "headquarter": "Francia",
+        "year": 1998,
+        "champion": "Francia",
+        "score": "3-0",
+        "subChampion": "Brasil"
+    },
+    {
+        "id": "17",
+        "headquarter": "Corea/Japon",
+        "year": 2002,
+        "champion": "Brasil",
+        "score": "2-0",
+        "subChampion": "Alemania"
+    },
+    {
+        "id": "18",
+        "headquarter": "Alemania",
+        "year": 2006,
+        "champion": "Italia",
+        "score": "5-3",
+        "subChampion": "Alemania"
+    },
+    {
+        "id": "19",
+        "headquarter": "Sudáfrica",
+        "year": 2010,
+        "champion": "España",
+        "score": "1-0",
+        "subChampion": "Holanda"
+    },
+    {
+        "id": "20",
+        "headquarter": "Brasil",
+        "year": 2014,
+        "champion": "Alemania",
+        "score": "1-0",
+        "subChampion": "Argentina"
+    },
+    { "id": "21", "headquarter": "Rusia", "year": 2018, "champion": "Francia", "score": "4-2", "subChampion": "Croacia" }
+]
