@@ -3,6 +3,7 @@
     "version": "0.1.0",
     "private": true,
     "dependencies": {
+        "axios": "^0.20.0",
         "body-parser": "^1.19.0",
         "bootstrap": "^4.4.0",
         "express": "^4.17.1",
@@ -10,6 +11,8 @@
         "morgan": "^1.10.0",
         "nodemon": "^2.0.4",
         "react": "16.8.3",
+        "react-bootstrap-table-next": "^4.0.3",
+        "react-bootstrap-table2-paginator": "^2.1.2",
         "react-dom": "16.8.3",
         "react-router-dom": "^5.1.2",
         "react-scripts": "2.1.5"
@@ -17,7 +20,7 @@
     "scripts": {
         "start": "npm-run-all -p client server",
         "client": "set port=2000  && react-scripts start",
-        "server": "json-server --port 2001 --watch server/db.json",
+        "server": "nodemon --port 3000 ./server/index.js",
         "seed": "node server/seed.js",
         "build": "react-scripts build",
         "test": "react-scripts test",
