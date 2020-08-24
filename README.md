@@ -22,6 +22,10 @@ Este proyecto fue creado con: [Create React App](https://github.com/facebook/cre
 ![Captura 2](https://user-images.githubusercontent.com/7141537/69931785-852a1900-1496-11ea-91b5-16b7bf2f33d9.PNG)
 ![Captura 3](https://user-images.githubusercontent.com/7141537/69931786-852a1900-1496-11ea-8f94-eed0283f8fe2.PNG)
 
+### API - Uso NodeJS - Express - Consumo db.json:
+
+### API - Uso React con MobX:
+
 ### En construcción 
 
 ![data](https://user-images.githubusercontent.com/7141537/48297627-294fb500-e47b-11e8-9d9c-4b184aefd012.png)
