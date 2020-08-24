@@ -35,7 +35,7 @@ const getCupByYear = async (req, res, next) => {
   }
 };
 
-const addCup = async (req, res, next) => {
+const createCup = async (req, res, next) => {
   try {
     const data = fs.readFileSync(filePath);
     const cups = JSON.parse(data);
@@ -118,7 +118,7 @@ const deleteCup = (req, res, next) => {
   }
 };
 
+router.route("/api/v1/cups/").get(getCups).post(createCup);
 router.route("/api/v1/cups/:year").get(getCupByYear).put(updateCup).delete(deleteCup);
-router.route("/api/v1/cups/").get(getCups).post(addCup);
 
 module.exports = router;

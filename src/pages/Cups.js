@@ -1,70 +1,66 @@
 import React from "react";
-import Service from "../components/Service";
 import BootstrapTable from "react-bootstrap-table-next";
 import paginationFactory from "react-bootstrap-table2-paginator";
-
+import CupStore from "./CupStore";
+import { decorate, observable, action, toJS } from "mobx";
+import { observer } from "mobx-react";
 import "./styles/Cups.css";
-
 import cupsLogo from "../images/soccer-ball.jpg";
+
+decorate(CupStore, {
+  columns: observable,
+  cups: observable,
+  options: observable,
+  getCups: action,
+  getCupByYear: action,
+  createCup: action,
+  updateCup: action,
+  deleteCup: action,
+});
+
+const cupStore = new CupStore();
 
 class Cups extends React.Component {
   constructor(props) {
     super(props);
-    this.state = {
-      cups: [],
-      columns: [
-        {
-          dataField: "id",
-          text: "ID",
-          align: "center",
-        },
-        {
-          dataField: "headquarter",
-          text: "Sede",
-          sort: true,
-        },
-        {
-          dataField: "year",
-          text: "Año",
-          sort: true,
-          align: "center",
-        },
-        {
-          dataField: "champion",
-          text: "Campeón",
-          sort: true,
-        },
-        {
-          dataField: "score",
-          text: "Resultado",
-          sort: true,
-          align: "center",
-        },
-        {
-          dataField: "subChampion",
-          text: "Sub Campeón",
-          sort: true,
-        },
-      ],
-    };
   }
-  componentDidMount() {
-    const service = new Service();
 
-    service
-      .getCups()
-      .then((result) => {
-        this.setState({ cups: result });
-      })
-      .catch((error) => {
-        console.log("Error", error);
-      });
+  componentDidMount() {
+    // Consultar todos los registros
+    cupStore.getCups();
+
+    // Consultar regustro por annio
+    // cupStore.getCupByYear("1986");
+
+    // Agregar registro
+    // const body = {
+    //   id: "22",
+    //   headquarter: "España",
+    //   year: "2022",
+    //   champion: "Venezuela",
+    //   score: "2-1",
+    //   subChampion: "Argentina",
+    // };
+    // cupStore.createCup(body);
+
+    // Actualizar registro
+    // const body = {
+    //   id: "22",
+    //   headquarter: "España",
+    //   year: "2022",
+    //   champion: "Venezuela",
+    //   score: "1-0",
+    //   subChampion: "Brasil",
+    // };
+    // cupStore.createCup(body);
+
+    // Borrar registro
+    // cupStore.deleteCup("2022");
   }
 
   render() {
-    const options = {
-      sizePerPage: 5,
-    };
+    const { cups, columns, options } = cupStore;
+    console.log(toJS(cupStore));
 
     return (
       <React.Fragment>
@@ -76,18 +72,20 @@ class Cups extends React.Component {
           </div>
         </div>
         <div className="container" style={{ marginTop: 50 }}>
-          <BootstrapTable
-            striped
-            hover
-            keyField="id"
-            data={this.state.cups}
-            columns={this.state.columns}
-            pagination={paginationFactory(options)}
-          />
+          {cups.length > 0 && (
+            <BootstrapTable
+              striped
+              hover
+              keyField="id"
+              data={cups}
+              columns={columns}
+              pagination={paginationFactory(options)}
+            />
+          )}
         </div>
       </React.Fragment>
     );
   }
 }
 
-export default Cups;
+export default observer(Cups);
