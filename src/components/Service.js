@@ -5,6 +5,7 @@ class Service {
   // Lista de campeonatos mundiales
   getCups = () =>
     axios.get(`${config.endpoint_base}/cups/`).then((res) => {
+      //console.log(123, res.data);
       return res.data;
     });
 
