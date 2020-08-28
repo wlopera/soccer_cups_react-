@@ -31,7 +31,7 @@ class Service {
 
   // Actualizar un registro
   updateCup = (body) => {
-    axios.post(`${config.endpoint_base}/cups/` + body.year, body).then((res) => {
+    axios.put(`${config.endpoint_base}/cups/` + body.year, body).then((res) => {
       return res.data;
     });
   };

@@ -4,45 +4,50 @@ import paginationFactory from "react-bootstrap-table2-paginator";
 import "./styles/Cups.css";
 import cupsLogo from "../images/soccer-ball.jpg";
 import { connect } from "react-redux";
-import { getCups } from "./actions";
+import { getCups, getCupByYear, createCup, deleteCup, updateCup } from "../actions/index";
 
 class Cups extends React.Component {
-  // getCups = () => {
-  //   this.props.getCups();
-  // };
-
   componentDidMount() {
     // Consultar todos los registros
-    this.props.getCups();
+    // this.props.getCups();
     // Consultar regustro por annio
-    // cupStore.getCupByYear("1986");
-    // Agregar registro
-    // const body = {
-    //   id: "22",
-    //   headquarter: "España",
-    //   year: "2022",
-    //   champion: "Venezuela",
-    //   score: "2-1",
-    //   subChampion: "Argentina",
-    // };
-    // cupStore.createCup(body);
-    // Actualizar registro
-    // const body = {
-    //   id: "22",
-    //   headquarter: "España",
-    //   year: "2022",
-    //   champion: "Venezuela",
-    //   score: "1-0",
-    //   subChampion: "Brasil",
-    // };
-    // cupStore.createCup(body);
-    // Borrar registro
-    // cupStore.deleteCup("2022");
+    // this.props.getCupByYear("1986");
+    // Agregar registro - copa
   }
 
-  render() {
-    console.log(11, this.props);
+  addCup = () => {
+    const body = {
+      id: "22",
+      headquarter: "España",
+      year: "2022",
+      champion: "Venezuela",
+      score: "2-1",
+      subChampion: "Argentina",
+    };
+    this.props.createCup(body);
+  };
 
+  showCups = () => {
+    this.props.getCups();
+  };
+
+  removeCup = () => {
+    this.props.deleteCup("2022");
+  };
+
+  updateCup = () => {
+    const body = {
+      id: "22",
+      headquarter: "Japón",
+      year: "2022",
+      champion: "Venezuela",
+      score: "1.0",
+      subChampion: "Brasil",
+    };
+    this.props.updateCup(body);
+  };
+
+  render() {
     return (
       <React.Fragment>
         <div className="Cups">
@@ -53,6 +58,10 @@ class Cups extends React.Component {
           </div>
         </div>
         <div className="container" style={{ marginTop: 50 }}>
+          <button onClick={this.addCup}>Agregar</button>
+          <button onClick={this.updateCup}>Modificar</button>
+          <button onClick={this.removeCup}>Eliminar</button>
+          <button onClick={this.showCups}>Mostrar</button>
           {this.props.cups.length > 0 && (
             <BootstrapTable
               striped
@@ -71,14 +80,16 @@ class Cups extends React.Component {
 
 const mapStateToProps = (store) => {
   return {
-    cups: store.cups,
-    columns: store.columns,
-    options: store.options,
+    ...store,
   };
 };
 
-const mapDispatchToprops = {
+const mapDispatchToProps = {
   getCups,
+  getCupByYear,
+  createCup,
+  deleteCup,
+  updateCup,
 };
 
-export default connect(mapStateToProps, mapDispatchToprops)(Cups);
+export default connect(mapStateToProps, mapDispatchToProps)(Cups);
