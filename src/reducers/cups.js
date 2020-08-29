@@ -1,4 +1,5 @@
-import { GET_CUPS, GET_CUP_BY_YEAR, ADD_CUPS, REMOVE_CUP, UPDATE_CUP } from "../actions/index";
+import React from "react";
+import { GET_CUPS, GET_CUP_BY_YEAR, ADD_CUPS, REMOVE_CUP, UPDATE_CUP, CHANGE_MODAL } from "../actions/index";
 
 const initialState = {
   cups: [],
@@ -66,9 +67,11 @@ const initialState = {
       },
     ],
   },
+  open: false,
 };
 
 const reducer = (state = initialState, action) => {
+  console.log(11, action.type, action.payload);
   switch (action.type) {
     case GET_CUPS:
       console.log("GEtCUP - state inicial: ", state);
@@ -90,6 +93,10 @@ const reducer = (state = initialState, action) => {
       console.log("UPDATE_CUP - state inicial: ", state);
       console.log("UPDATE_CUP - action.payload: ", action.payload);
       return Object.assign({}, state, { cups: action.payload });
+    case CHANGE_MODAL:
+      console.log("CHANGE_MODAL - state inicial: ", state);
+      console.log("CHANGE_MODAL - action.open: ", action.show);
+      return Object.assign({}, state, { open: action.show });
     default:
       return state;
   }

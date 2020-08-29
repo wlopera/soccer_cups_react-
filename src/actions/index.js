@@ -6,6 +6,7 @@ export const GET_CUP_BY_YEAR = "GET_CUP_BY_YEAR";
 export const ADD_CUPS = "ADD_CUPS";
 export const REMOVE_CUP = "REMOVE_CUP";
 export const UPDATE_CUP = "UPDATE_CUP";
+export const CHANGE_MODAL = "CHANGE_MODAL";
 
 const service = new Service();
 
@@ -55,22 +56,20 @@ export const createCup = (body) => {
 // // Actualizar Registro
 export const updateCup = (body) => {
   return (dispatch, getState) => {
-    dispatch(deleteCup(body.year));
-
-    // service.updateCup(body);
-    // const data = Object.assign([], getState().cups);
-    // const result = data.map((cup) => {
-    //   if (`${cup.year}` === `${body.year}`) {
-    //     cup.headquarter = body.headquarter;
-    //     cup.year = body.year;
-    //     cup.champion = body.champion;
-    //     cup.score = body.score;
-    //     cup.subChampion = body.subChampion;
-    //   }
-    //   return cup;
-    // });
-    // console.log(11, result);
-    dispatch(createCup(body));
+    service.updateCup(body);
+    const data = Object.assign([], getState().cups);
+    const result = data.map((cup) => {
+      if (`${cup.year}` === `${body.year}`) {
+        cup.headquarter = body.headquarter;
+        cup.year = body.year;
+        cup.champion = body.champion;
+        cup.score = body.score;
+        cup.subChampion = body.subChampion;
+      }
+      return cup;
+    });
+    console.log(11, result);
+    dispatch({ type: UPDATE_CUP, payload: result });
   };
 };
 
@@ -90,4 +89,9 @@ export const deleteCup = (year) => {
       .filter((cup) => cup !== null);
     dispatch({ type: REMOVE_CUP, payload: result });
   };
+};
+
+//Mostrar modal
+export const showModal = (open) => {
+  return { type: CHANGE_MODAL, show: open };
 };
