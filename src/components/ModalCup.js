@@ -2,7 +2,7 @@ import React from "react";
 import { Button, Header, Icon, Modal } from "semantic-ui-react";
 import { useSelector, useDispatch } from "react-redux";
 import { Form } from "semantic-ui-react";
-import { createCup, updateCup, getCups } from "../actions/index";
+import { updateCup } from "../actions/index";
 
 const data = {
   id: "",
@@ -18,9 +18,6 @@ function ModalCup({ row }) {
 
   const newCup = useSelector((store) => store.newCup);
 
-  console.log("newCup: ", newCup);
-  console.log("row: ", row);
-
   const dispatch = useDispatch();
 
   const addCup = () => {
@@ -33,9 +30,7 @@ function ModalCup({ row }) {
       subChampion: data.subChampion.value,
     };
 
-    console.log(123, cup);
     dispatch(updateCup(cup));
-    dispatch(getCups());
     setOpen(false);
   };
 

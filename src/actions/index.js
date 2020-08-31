@@ -17,7 +17,7 @@ export const getCups = () => {
     service
       .getCups()
       .then((result) => {
-        console.log("Copas: ", result);
+        //console.log("Copas: ", result);
         dispatch({ type: GET_CUPS, payload: result });
       })
       .catch((error) => {
@@ -32,7 +32,7 @@ export const getCupByYear = (year) => {
     service
       .getCupByYear(year)
       .then((result) => {
-        console.log("Copa de ", year, ": ", result);
+        //console.log("Copa de ", year, ": ", result);
         dispatch({ type: GET_CUP_BY_YEAR, payload: [result] });
       })
       .catch((error) => {
@@ -48,7 +48,7 @@ export const createCup = (body) => {
     service.createCup(body);
     const data = Object.assign([], getState().cups);
     data.push(body);
-    console.log("Copa creada.: ", data);
+    //console.log("Copa creada.: ", data);
     dispatch({ type: ADD_CUPS, payload: data });
   };
 };
@@ -68,8 +68,7 @@ export const updateCup = (body) => {
       }
       return cup;
     });
-    console.log(11, result);
-    dispatch({ type: UPDATE_CUP, payload: result });
+    dispatch({ type: UPDATE_CUP, payload: body });
   };
 };
 

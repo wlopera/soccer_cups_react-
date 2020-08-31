@@ -8,14 +8,48 @@ import { getCups, getCupByYear, createCup, deleteCup, updateCup, showModal } fro
 import { Form, Button, Header, Icon, Modal } from "semantic-ui-react";
 
 class Cups extends React.Component {
-  state = {
-    id: "",
-    headquarter: "",
-    year: "",
-    champion: "",
-    score: "",
-    subChampion: "",
-  };
+  constructor(props) {
+    super(props);
+
+    this.state = {
+      id: "",
+      headquarter: "",
+      year: "",
+      champion: "",
+      score: "",
+      subChampion: "",
+      columns: this.getColumn(),
+      options: {
+        sizePerPage: 5,
+        sizePerPageList: [
+          {
+            text: "5 registros",
+            value: 5,
+          },
+          {
+            text: "10 registros",
+            value: 10,
+          },
+          {
+            text: "15 registros",
+            value: 10,
+          },
+          {
+            text: "20 registros",
+            value: 10,
+          },
+          {
+            text: "25 registros",
+            value: 10,
+          },
+          {
+            text: "Todos los resgitros",
+            value: 50,
+          },
+        ],
+      },
+    };
+  }
 
   handlerChange = (el) => {
     const statusCopy = Object.assign({}, this.state);
@@ -24,35 +58,13 @@ class Cups extends React.Component {
   };
 
   componentDidMount() {
-    this.props.columns.push({
-      dataField: "actionDelete",
-      text: "Borrar",
-      align: "center",
-      formatter: (cell, row) => (
-        <button className="btn btn-default" onClick={() => this.removeCup(row)}>
-          <Icon link name="close" />
-        </button>
-      ),
-    });
-
-    this.props.columns.push({
-      dataField: "actionUpdate",
-      text: "Modificar",
-      align: "center",
-      formatter: (cell, row) => (
-        <button className="btn btn-default" onClick={() => this.modifyCup(row)}>
-          <Icon link name="pencil alternate" />
-        </button>
-      ),
-    });
-
     // Consultar todos los registros
     this.props.getCups();
   }
 
   addCup = () => {
     const cup = {
-      id: this.state.id,
+      id: "" + this.state.id,
       headquarter: this.state.headquarter,
       year: this.state.year,
       champion: this.state.champion,
@@ -88,7 +100,7 @@ class Cups extends React.Component {
 
   modifyCup = (row) => {
     const newCup = {
-      id: row.id,
+      id: "" + row.id,
       headquarter: row.headquarter,
       year: row.year,
       champion: row.champion,
@@ -114,8 +126,64 @@ class Cups extends React.Component {
     this.props.showModal(false);
   };
 
+  getColumn = () => [
+    {
+      dataField: "id",
+      text: "ID",
+      align: "center",
+      hidden: true,
+    },
+    {
+      dataField: "headquarter",
+      text: "Sede",
+      sort: true,
+    },
+    {
+      dataField: "year",
+      text: "Año",
+      sort: true,
+      align: "center",
+    },
+    {
+      dataField: "champion",
+      text: "Campeón",
+      sort: true,
+    },
+    {
+      dataField: "score",
+      text: "Resultado",
+      sort: true,
+      align: "center",
+    },
+    {
+      dataField: "subChampion",
+      text: "Sub Campeón",
+      sort: true,
+    },
+    {
+      dataField: "actionDelete",
+      text: "Borrar",
+      align: "center",
+      formatter: (cell, row) => (
+        <button className="btn btn-default" onClick={() => this.removeCup(row)}>
+          <Icon link name="close" />
+        </button>
+      ),
+    },
+
+    {
+      dataField: "actionUpdate",
+      text: "Modificar",
+      align: "center",
+      formatter: (cell, row) => (
+        <button className="btn btn-default" onClick={() => this.modifyCup(row)}>
+          <Icon link name="pencil alternate" />
+        </button>
+      ),
+    },
+  ];
+
   render() {
-    console.log("modal: ", this.open);
     return (
       <React.Fragment>
         <div className="Cups">
@@ -126,15 +194,23 @@ class Cups extends React.Component {
           </div>
         </div>
         <div className="container" style={{ marginTop: 50 }}>
-          <button onClick={this.createCup}>Agregar Copa</button>
+          <p align="Center">
+            <h2>Campeones Mundiales</h2>
+          </p>
+          <p align="right">
+            <button className="btnAdd" onClick={this.createCup}>
+              Agregar Copa
+            </button>
+          </p>
+
           {this.props.cups.length > 0 && (
             <BootstrapTable
               striped
               hover
               keyField="id"
               data={this.props.cups}
-              columns={this.props.columns}
-              pagination={paginationFactory(this.props.options)}
+              columns={this.state.columns}
+              pagination={paginationFactory(this.state.options)}
             />
           )}
 
@@ -150,7 +226,7 @@ class Cups extends React.Component {
             <Header icon="archive" content="Agregar Copa" />
             <Modal.Content>
               <Form>
-                <Form.Group>
+                {/* <Form.Group>
                   <Form.Field width={4}>
                     <label>
                       <strong>ID: </strong>
@@ -166,7 +242,7 @@ class Cups extends React.Component {
                       onChange={this.handlerChange}
                     />
                   </Form.Field>
-                </Form.Group>
+                </Form.Group> */}
                 <Form.Group>
                   <Form.Field width={4}>
                     <label>
@@ -259,6 +335,7 @@ class Cups extends React.Component {
               <Button color="red" onClick={() => this.props.showModal(false)}>
                 <Icon name="remove" /> Cancelar
               </Button>
+              {/* <Button color="green" onClick={() => this.addCup()}> */}
               <Button color="green" onClick={() => this.updateCup()}>
                 <Icon name="checkmark" /> Continuar
               </Button>
