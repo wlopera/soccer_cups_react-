@@ -2,7 +2,10 @@ import React from "react";
 import BootstrapTable from "react-bootstrap-table-next";
 import paginationFactory from "react-bootstrap-table2-paginator";
 import "./styles/Cups.css";
+
 import cupsLogo from "../images/soccer-ball.jpg";
+import decorationImage from "../images/soccer-decoration.jpg";
+
 import { connect } from "react-redux";
 import { getCups, getCupByYear, createCup, deleteCup, updateCup, showModal } from "../actions/index";
 import { Form, Button, Header, Icon, Modal } from "semantic-ui-react";
@@ -32,15 +35,15 @@ class Cups extends React.Component {
           },
           {
             text: "15 registros",
-            value: 10,
+            value: 15,
           },
           {
             text: "20 registros",
-            value: 10,
+            value: 20,
           },
           {
             text: "25 registros",
-            value: 10,
+            value: 25,
           },
           {
             text: "Todos los resgitros",
@@ -64,7 +67,7 @@ class Cups extends React.Component {
 
   addCup = () => {
     const cup = {
-      id: "" + this.state.id,
+      id: this.state.id,
       headquarter: this.state.headquarter,
       year: this.state.year,
       champion: this.state.champion,
@@ -132,38 +135,52 @@ class Cups extends React.Component {
       text: "ID",
       align: "center",
       hidden: true,
+      headerAlign: "center",
+      headerStyle: { backgroundColor: "green" },
     },
     {
       dataField: "headquarter",
-      text: "Sede",
+      text: "SEDE",
       sort: true,
+      headerAlign: "center",
+      headerStyle: { backgroundColor: "green" },
     },
     {
       dataField: "year",
-      text: "Año",
+      text: "AÑO",
       sort: true,
       align: "center",
+      headerAlign: "center",
+      headerStyle: { backgroundColor: "green" },
     },
     {
       dataField: "champion",
-      text: "Campeón",
+      text: "CAMPEON",
       sort: true,
+      headerAlign: "center",
+      headerStyle: { backgroundColor: "green" },
     },
     {
       dataField: "score",
-      text: "Resultado",
+      text: "RESULTADO",
       sort: true,
       align: "center",
+      headerAlign: "center",
+      headerStyle: { backgroundColor: "green" },
     },
     {
       dataField: "subChampion",
-      text: "Sub Campeón",
+      text: "SUB CAMPEON",
       sort: true,
+      headerAlign: "center",
+      headerStyle: { backgroundColor: "green" },
     },
     {
       dataField: "actionDelete",
-      text: "Borrar",
+      text: "BORRAR",
       align: "center",
+      headerAlign: "center",
+      headerStyle: { backgroundColor: "green" },
       formatter: (cell, row) => (
         <button className="btn btn-default" onClick={() => this.removeCup(row)}>
           <Icon link name="close" />
@@ -173,8 +190,10 @@ class Cups extends React.Component {
 
     {
       dataField: "actionUpdate",
-      text: "Modificar",
+      text: "MODIFICAR",
       align: "center",
+      headerAlign: "center",
+      headerStyle: { backgroundColor: "green" },
       formatter: (cell, row) => (
         <button className="btn btn-default" onClick={() => this.modifyCup(row)}>
           <Icon link name="pencil alternate" />
@@ -190,13 +209,12 @@ class Cups extends React.Component {
           <div className="Cups__hero">
             <div className="Cups__containers">
               <img className="Cups_conf-logo" src={cupsLogo} alt="Copas Logo" />
+              <img src={decorationImage} alt="Decoration" className="soccer-decoration" />
             </div>
           </div>
         </div>
-        <div className="container" style={{ marginTop: 50 }}>
-          <p align="Center">
-            <h2>Campeones Mundiales</h2>
-          </p>
+        <div className="container">
+          <h1>Campeones</h1>
           <p align="right">
             <button className="btnAdd" onClick={this.createCup}>
               Agregar Copa
@@ -213,7 +231,6 @@ class Cups extends React.Component {
               pagination={paginationFactory(this.state.options)}
             />
           )}
-
           <Modal
             size="tiny"
             dimmer="blurring"
@@ -222,8 +239,9 @@ class Cups extends React.Component {
             onClose={() => this.props.showModal(false)}
             onOpen={() => this.props.showModal(true)}
             closeOnDimmerClick={false}
+            className="modalClass"
           >
-            <Header icon="archive" content="Agregar Copa" />
+            <Header icon="soccer" content="Copa Mundial" />
             <Modal.Content>
               <Form>
                 {/* <Form.Group>
