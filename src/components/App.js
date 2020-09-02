@@ -4,8 +4,7 @@ import { BrowserRouter, Switch, Route } from "react-router-dom";
 
 import Layout from "./Layout";
 import Home from "../pages/Home";
-// import Cups from "../pages/Cups";
-import CupsRedux from "../pages/CupsRedux";
+import CupLayout from "../pages/CupLayout";
 
 import { createStore, applyMiddleware } from "redux";
 import { Provider } from "react-redux";
@@ -23,9 +22,8 @@ function App() {
         <Layout>
           <Switch>
             <Route exact path="/" component={Home} />
-            {/* <Route exact path="/" component={Cups} /> */}
             <Route exact path="/cups">
-              <CupsRedux />
+              <CupLayout />
             </Route>
           </Switch>
         </Layout>
