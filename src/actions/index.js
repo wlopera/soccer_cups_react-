@@ -48,7 +48,7 @@ export const createCup = (body) => {
     service.createCup(body);
     const data = Object.assign([], getState().cups);
     data.push(body);
-    console.log("Copa creada.: ", data);
+    //console.log("Copa creada.: ", data);
     dispatch({ type: ADD_CUPS, payload: data });
   };
 };
@@ -68,6 +68,7 @@ export const updateCup = (body) => {
       }
       return cup;
     });
+    //console.log("Copa actualizada: ", body);
     dispatch({ type: UPDATE_CUP, payload: body });
   };
 };

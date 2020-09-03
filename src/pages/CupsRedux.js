@@ -51,6 +51,7 @@ class Cups extends React.Component {
           },
         ],
       },
+      btnType: "Modify",
     };
   }
 
@@ -97,6 +98,7 @@ class Cups extends React.Component {
       subChampion: "",
     };
 
+    this.setState({ btnType: "Add" });
     this.setState(newCup);
     this.props.showModal(true);
   };
@@ -111,6 +113,7 @@ class Cups extends React.Component {
       subChampion: row.subChampion,
     };
 
+    this.setState({ btnType: "Modify" });
     this.setState(newCup);
     this.props.showModal(true);
   };
@@ -124,6 +127,7 @@ class Cups extends React.Component {
       score: this.state.score,
       subChampion: this.state.subChampion,
     };
+    console.log(11, cup);
 
     this.props.updateCup(cup);
     this.props.showModal(false);
@@ -241,7 +245,8 @@ class Cups extends React.Component {
             closeOnDimmerClick={false}
             className="modalClass"
           >
-            <Header icon="soccer" content="Copa Mundial" />
+            {this.state.btnType === "Add" && <Header icon="soccer" content="Agregar Copa Mundial" />}
+            {this.state.btnType === "Modify" && <Header icon="soccer" content="Modificar Copa Mundial" />}
             <Modal.Content>
               <Form>
                 {/* <Form.Group>
@@ -353,10 +358,16 @@ class Cups extends React.Component {
               <Button color="red" onClick={() => this.props.showModal(false)}>
                 <Icon name="remove" /> Cancelar
               </Button>
-              {/* <Button color="green" onClick={() => this.addCup()}> */}
-              <Button color="green" onClick={() => this.updateCup()}>
-                <Icon name="checkmark" /> Continuar
-              </Button>
+              {this.state.btnType === "Add" && (
+                <Button color="green" onClick={() => this.addCup()}>
+                  <Icon name="checkmark" /> Crear
+                </Button>
+              )}
+              {this.state.btnType === "Modify" && (
+                <Button color="green" onClick={() => this.updateCup()}>
+                  <Icon name="checkmark" /> Actualizar
+                </Button>
+              )}
             </Modal.Actions>
           </Modal>
         </div>
