@@ -29,6 +29,7 @@ Este proyecto fue creado con: [Create React App](https://github.com/facebook/cre
 ![Captura1](https://user-images.githubusercontent.com/7141537/69931788-85c2af80-1496-11ea-899d-acfcb5ddcd6b.PNG)
 ![Captura 2](https://user-images.githubusercontent.com/7141537/69931785-852a1900-1496-11ea-91b5-16b7bf2f33d9.PNG)
 ![Captura 3](https://user-images.githubusercontent.com/7141537/69931786-852a1900-1496-11ea-8f94-eed0283f8fe2.PNG)
+
 ![Captura1](https://user-images.githubusercontent.com/7141537/92159206-a5568200-edf2-11ea-9ba5-706055b5fbb1.PNG)
 
 ### Salida - Modal - Agregar/Modificar
