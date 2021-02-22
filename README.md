@@ -1,11 +1,12 @@
 # soccer_cups_react -> Campeonatos de Mundo de Futbol. 
-Campeones Mundiales de Futbol - React - Api Json-server
+Campeones Mundiales de Futbol - React - Api Json-server y NodeJS
 
 Este proyecto fue creado con: [Create React App](https://github.com/facebook/create-react-app).
 
 ### Librerías y herramientas:
 
 * React
+* NodeJs
 * Servicio APi - Json-server
 
 ### Código Fuente
