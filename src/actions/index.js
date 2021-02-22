@@ -1,5 +1,4 @@
-import Service from "../components/Service";
-const config = require("../config");
+import Service from "../services/Service";
 
 export const GET_CUPS = "GET_CUPS";
 export const GET_CUP_BY_YEAR = "GET_CUP_BY_YEAR";
@@ -57,17 +56,17 @@ export const createCup = (body) => {
 export const updateCup = (body) => {
   return (dispatch, getState) => {
     service.updateCup(body);
-    const data = Object.assign([], getState().cups);
-    const result = data.map((cup) => {
-      if (`${cup.year}` === `${body.year}`) {
-        cup.headquarter = body.headquarter;
-        cup.year = body.year;
-        cup.champion = body.champion;
-        cup.score = body.score;
-        cup.subChampion = body.subChampion;
-      }
-      return cup;
-    });
+    // const data = Object.assign([], getState().cups);
+    // const result = data.map((cup) => {
+    //   if (`${cup.year}` === `${body.year}`) {
+    //     cup.headquarter = body.headquarter;
+    //     cup.year = body.year;
+    //     cup.champion = body.champion;
+    //     cup.score = body.score;
+    //     cup.subChampion = body.subChampion;
+    //   }
+    //   return cup;
+    // });
     //console.log("Copa actualizada: ", body);
     dispatch({ type: UPDATE_CUP, payload: body });
   };

@@ -2,7 +2,7 @@ const express = require("express");
 const bodyParser = require("body-parser");
 const logger = require("morgan");
 const config = require("./serverConfig");
-const routeCups = require("../routes/cups");
+const routeCups = require("./routes/cups");
 var cors = require("cors");
 
 const app = express();

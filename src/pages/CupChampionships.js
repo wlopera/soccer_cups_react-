@@ -35,7 +35,7 @@ const cupChampionships = () => {
   const result = [];
   mapSort.forEach((value, key) => {
     let country = countryCodeMap.get(key);
-    if (country == undefined) country = key.substring(0, 2).toLowerCase();
+    if (country === undefined) country = key.substring(0, 2).toLowerCase();
     result.push(
       <li key={uuidv4()}>
         <Flag name={country} /> {key} {value}
