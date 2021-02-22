@@ -16,7 +16,7 @@ export const getCups = () => {
     service
       .getCups()
       .then((result) => {
-        //console.log("Copas: ", result);
+        console.log("Copas: ", result);
         dispatch({ type: GET_CUPS, payload: result });
       })
       .catch((error) => {

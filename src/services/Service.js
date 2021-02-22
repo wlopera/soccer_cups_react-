@@ -35,31 +35,6 @@ class Service {
       return res.data;
     });
   };
-
-  // callApi = async (endpoint, options = {}, data) => {
-  //   let result;
-  //   const url = config.endpoint_base + endpoint;
-  //   const response = await axios({
-  //     method: options.method,
-  //     url: url,
-  //     data: data,
-  //   })
-  //     .then((res) => {
-  //       result = res.data;
-  //     })
-  //     .catch((e) => {
-  //       console.log(e);
-  //     });
-
-  //   console.log("Campeonatos", result);
-  //   return result;
-  // };
-
-  // // Lista de campeonatos mundiales
-  // getCups = () => {
-  //   console.log("salida: ", this.callApi("/cups/", { method: "get" }));
-  //   return this.callApi("/cups/", { method: "get" });
-  // };
 }
 
 export default Service;
